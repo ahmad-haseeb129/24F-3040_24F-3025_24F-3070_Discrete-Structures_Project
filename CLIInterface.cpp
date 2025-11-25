@@ -69,13 +69,7 @@ void CLIInterface::handleAddStudent()
     string id, name;
     cout << "Enter student ID: ";
     cin >> id;
-    while (cin.fail())
-    {
-        cin.clear(); // clear the fail state
-        cin.ignore(numeric_limits<streamsize>::max(), '\n'); // discard invalid input
-        cout << "Invalid input. Please enter a number: ";
-        cin >> id;
-    }
+	cin.ignore();
 
     cout << "Enter student name: ";
     getline(cin, name);
@@ -257,19 +251,19 @@ void CLIInterface::handleAddCourse()
 
     cout << "Enter course ID: ";
     cin >> id;
-    while (cin.fail())
-    {
-        cin.clear(); // clear the fail state
-        cin.ignore(numeric_limits<streamsize>::max(), '\n'); // discard invalid input
-        cout << "Invalid input. Please enter a number: ";
-        cin >> id;
-    }
+    cin.ignore();
     cout << "Enter course name: ";
     getline(cin, name);
 
     cout << "Enter credit hours: ";
     cin >> creditHours;
-
+    while (cin.fail())
+    {
+        cin.clear(); // clear the fail state
+        cin.ignore(numeric_limits<streamsize>::max(), '\n'); // discard invalid input
+        cout << "Invalid input. Please enter a number: ";
+        cin >> creditHours;
+    }
     for (const auto& course : courses) 
     {
         if (course.id == id) 
@@ -364,13 +358,7 @@ void CLIInterface::handleAddFaculty()
     string id, name;
     cout << "Enter faculty ID: ";
     cin >> id;
-    while (cin.fail())
-    {
-        cin.clear(); // clear the fail state
-        cin.ignore(numeric_limits<streamsize>::max(), '\n'); // discard invalid input
-        cout << "Invalid input. Please enter a number: ";
-        cin >> id;
-    }
+	cin.ignore();
 
     // Check for duplicate faculty IDs
     for (const auto& f : faculty) 
@@ -481,13 +469,7 @@ void CLIInterface::handleAddRoom()
 
     cout << "Enter room ID: ";
     cin >> id;
-    while (cin.fail())
-    {
-        cin.clear(); // clear the fail state
-        cin.ignore(numeric_limits<streamsize>::max(), '\n'); // discard invalid input
-        cout << "Invalid input. Please enter a number: ";
-        cin >> id;
-    }
+	cin.ignore();
 
     // Check for duplicate room IDs
     for (const auto& room : rooms) {
